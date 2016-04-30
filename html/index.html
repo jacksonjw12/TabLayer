@@ -20,6 +20,17 @@
 <body>
 <script type="text/javascript">
 
+function delay(ms) {
+    var cur_d = new Date();
+    var cur_ticks = cur_d.getTime();
+    var ms_passed = 0;
+    while(ms_passed < ms) {
+        var d = new Date();  // Possible memory leak?
+        var ticks = d.getTime();
+        ms_passed = ticks - cur_ticks;
+        // d = null;  // Prevent memory leak?
+    }
+}
 function getNotes(tab, step){
 	notes = [tab[0].substring(step,step+1), tab[1].substring(step,step+1),tab[2].substring(step,step+1),tab[3].substring(step,step+1),tab[4].substring(step,step+1),tab[5].substring(step,step+1)]
 	for(note in notes){
@@ -34,17 +45,7 @@ function getNotes(tab, step){
 	return notes;
 }
 
-function delay(ms) {
-    var cur_d = new Date();
-    var cur_ticks = cur_d.getTime();
-    var ms_passed = 0;
-    while(ms_passed < ms) {
-        var d = new Date();  // Possible memory leak?
-        var ticks = d.getTime();
-        ms_passed = ticks - cur_ticks;
-        // d = null;  // Prevent memory leak?
-    }
-}
+
 
 function playStep(notes){
 	var delay = 0; // play one note every quarter second
@@ -85,7 +86,7 @@ window.onload = function () {
 			MIDI.noteOff(0, notes, delay + 0.75);*/
 			for(step = 0; step<tab[0].length; step++){
 				notes = getNotes(tab,step)
-				setTimeout(playStep(notes),step*2500)
+				playStep(notes)
 				delay(250)
 			}
 
