@@ -64,12 +64,12 @@ window.onload = function () {
 			var velocity = 127; // how hard the note hits
 			// play the note
 			MIDI.setVolume(0, 127);
-			MIDI.noteOn(0, notes, velocity, delay);
+			/*MIDI.noteOn(0, notes, velocity, delay);
 			MIDI.noteOff(0, notes, delay + 0.75);
 			MIDI.noteOn(0, notes, velocity, delay);
 			MIDI.noteOff(0, notes, delay + 0.75);
 			MIDI.noteOn(0, notes, velocity, delay);
-			MIDI.noteOff(0, notes, delay + 0.75);
+			MIDI.noteOff(0, notes, delay + 0.75);*/
 			for(step = 0; step<tab[0].length; step++){
 				notes = getNotes(tab,step)
 				setTimeout(playStep(notes),step*250)
