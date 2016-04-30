@@ -20,7 +20,7 @@
 <body>
 <script type="text/javascript">
 
-function delay(ms) {
+function delaythis(ms) {
     var cur_d = new Date();
     var cur_ticks = cur_d.getTime();
     var ms_passed = 0;
@@ -87,7 +87,7 @@ window.onload = function () {
 			for(step = 0; step<tab[0].length; step++){
 				notes = getNotes(tab,step)
 				playStep(notes)
-				delay(250)
+				delaythis(250)
 			}
 
 		}
