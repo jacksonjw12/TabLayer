@@ -73,7 +73,7 @@ window.onload = function () {
 			MIDI.noteOff(0, notes, delay + 0.75);*/
 			for(step = 0; step<tab[0].length; step++){
 				notes = getNotes(tab,step)
-				setTimeout(playStep(notes),step*250)
+				setTimeout(playStep(notes),step*2500)
 			}
 
 		}
