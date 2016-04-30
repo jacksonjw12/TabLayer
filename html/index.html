@@ -34,6 +34,18 @@ function getNotes(tab, step){
 	return notes;
 }
 
+function delay(ms) {
+    var cur_d = new Date();
+    var cur_ticks = cur_d.getTime();
+    var ms_passed = 0;
+    while(ms_passed < ms) {
+        var d = new Date();  // Possible memory leak?
+        var ticks = d.getTime();
+        ms_passed = ticks - cur_ticks;
+        // d = null;  // Prevent memory leak?
+    }
+}
+
 function playStep(notes){
 	var delay = 0; // play one note every quarter second
 	var velocity = 127; // how hard the note hits
@@ -74,6 +86,7 @@ window.onload = function () {
 			for(step = 0; step<tab[0].length; step++){
 				notes = getNotes(tab,step)
 				setTimeout(playStep(notes),step*2500)
+				delay(250)
 			}
 
 		}
