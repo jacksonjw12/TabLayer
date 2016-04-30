@@ -14,8 +14,12 @@ function start() {
 	var json = require('express-json');
 	app.use(json())
 
-	app.use(express.static(__dirname + '/js'));
-	app.use(express.static(__dirname + '/inc'));
+	//app.use(express.static(__dirname + '/js'));
+	//app.use(express.static(__dirname + '/inc'));
+	//app.use(express.static(__dirname + '/inc'));
+	app.use('/js', express.static('js'));
+	app.use('/inc', express.static('inc'));
+	
 
 	app.get('/', function (req, res) {
 		res.sendFile(__dirname + '/html/index.html')
