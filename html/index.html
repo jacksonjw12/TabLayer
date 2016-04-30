@@ -32,17 +32,17 @@ window.onload = function () {
 			d = "--------------2--0-----4-----0--2--"
 			a = "-----------2--------2-----2--------"
 			e2= "--0--3--4--------------------------"
-			var delay = .75; // play one note every quarter second
-			var note1 = 50; // the MIDI note
+			var delay = 0; // play one note every quarter second
+			var notes = 50; // the MIDI note
 			var velocity = 127; // how hard the note hits
 			// play the note
 			MIDI.setVolume(0, 127);
-			/*MIDI.noteOn(0, note, velocity, delay);
-			MIDI.noteOff(0, note, delay + 0.75);
-			MIDI.noteOn(0, note, velocity, delay);
-			MIDI.noteOff(0, note, delay + 0.75);
-			MIDI.noteOn(0, note, velocity, delay);
-			MIDI.noteOff(0, note, delay + 0.75);*/
+			MIDI.noteOn(0, notes, velocity, delay);
+			MIDI.noteOff(0, notes, delay + 0.75);
+			MIDI.noteOn(0, notes, velocity, delay);
+			MIDI.noteOff(0, notes, delay + 0.75);
+			MIDI.noteOn(0, notes, velocity, delay);
+			MIDI.noteOff(0, notes, delay + 0.75);
 			for(note = 0; note<e1.length; note++){
 				MIDI.noteOn(0, Number(e1.substring(note,note+1))*20,127,0);
 				MIDI.noteOff(0, Number(e1.substring(note,note+1))*20, 0.75);
