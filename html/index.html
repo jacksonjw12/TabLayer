@@ -37,7 +37,7 @@ function getNotes(tab, step){
 
 
 
-function playStep(notes){
+function playStep(notes, tab, step){
 	var delay = 0; // play one note every quarter second
 	var velocity = 127; // how hard the note hits
 	MIDI.setVolume(0, 127);
@@ -48,6 +48,9 @@ function playStep(notes){
 		}
 	}
 	console.log(notes)
+	if(step<tab[0].length){
+		setTimeOut(playStep(getNotes(tab,step+1),tab,step+1),250)
+	}	
 }
 
 window.onload = function () {
@@ -74,11 +77,11 @@ window.onload = function () {
 			MIDI.noteOff(0, notes, delay + 0.75);
 			MIDI.noteOn(0, notes, velocity, delay);
 			MIDI.noteOff(0, notes, delay + 0.75);*/
-			for(step = 0; step<tab[0].length; step++){
-				notes = getNotes(tab,step)
-				setTimeout(playStep(notes),250*step + 250)
+			
+			notes = getNotes(tab,step)
+			playStep(notes, tab, 0)
 				
-			}
+			
 
 		}
 	});
