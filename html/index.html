@@ -49,7 +49,7 @@ function playStep(notes, tab, step){
 	}
 	console.log(notes)
 	if(step<tab[0].length){
-		setTimeOut(playStep(getNotes(tab,step+1),tab,step+1),250)
+		setTimeout(playStep(getNotes(tab,step+1),tab,step+1),250)
 	}	
 }
 
