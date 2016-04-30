@@ -19,7 +19,7 @@ function start() {
 	//app.use(express.static(__dirname + '/inc'));
 	app.use('/js', express.static('js'));
 	app.use('/inc', express.static('inc'));
-	
+	app.use('/soundfont', express.static('soundfont'));
 
 	app.get('/', function (req, res) {
 		res.sendFile(__dirname + '/html/index.html')
